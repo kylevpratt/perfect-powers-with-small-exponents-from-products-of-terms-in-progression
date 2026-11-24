@@ -118,10 +118,11 @@ where
 
 ```math
 \theta(x,y;d,a)=
-\sum_{\substack{y<p\leq x\\p\text{ prime}\\p\equiv a\pmod{d}}}\log p,
+\sum_{p}\log p,
 ```
 
-for all real $x\geq y\geq 5$, natural numbers
+with the sum over primes $p$ satisfying $y < p \leq x$ and
+$p\equiv a\pmod{d}$. The estimate holds for all real $x\geq y\geq 5$, natural numbers
 $2\leq d\leq(\log x)^{199/100}$, and integers $a$ with $\gcd(|a|,d)=1$.
 The constant depends only on $A$, uniformly in $x,y,d,a$. The paper's assertion
 that the constant is effectively computable is outside the formalized input.
