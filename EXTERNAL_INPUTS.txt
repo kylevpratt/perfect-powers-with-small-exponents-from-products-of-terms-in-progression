@@ -1,0 +1,105 @@
+External theorem interfaces for the perfect-powers formalization
+
+The final entry point is PerfectPowers.mainResults_of_external_inputs in
+PerfectPowers/Main/Conditional.lean. Its four explicit hypotheses are:
+
+1. External.AffineFaltingsStatement
+2. External.SuperellipticGenusStatement
+3. External.RemondStatement
+4. External.PrimeAPStatement
+
+These are proposition definitions and theorem arguments, not globally
+declared mathematical axioms. The final theorem is conditional on these four
+permitted inputs; it does not claim to prove Faltings, the genus bound,
+Remond, or the draft's uniform prime-AP estimate.
+
+The project treats these four statements as standing external hypotheses.
+Proofs of these inputs and effective computability of k_0 are outside the
+project's scope.
+
+Affine Faltings
+
+This input is the standard affine-plane formulation over Q. An absolutely
+irreducible nonsingular plane equation whose geometric genus is at least two
+has finitely many rational zeros. Absolute irreducibility is irreducibility
+after mapping coefficients to AlgebraicClosure Q. Nonsingularity is the
+Jacobian criterion at every zero over that algebraic closure.
+
+The passage from the usual smooth-projective Faltings theorem to this
+coordinate formulation, including the standard geometric interpretations
+of the Jacobian criterion and genus invariant, is inside the external
+theorem boundary of this project. We do not claim that passage has
+been proved in Lean.
+
+Concrete geometric genus
+
+For an AffinePlaneCurve, form the actual rational coordinate ring
+
+    A = Q[X,Y] / (F),
+
+and its fraction field L. Irreducibility is supplied as a proof, so A is an
+integral domain. In Omega[L/Q], consider, for each discrete valuation
+Q-subalgebra R of L having fraction field L, the Q-linear span of
+
+    { a * d(b) : a,b in R }.
+
+The intersection of these spaces is the space of rational differentials
+regular at every place, including places at infinity. The definition of
+geometricGenus is its Q-dimension. This is a concrete regular-differential
+definition, not an arbitrary numerical function or a genus formula assigned
+to our family. Both external statements use this identical definition.
+
+For one-variable geometrically integral function fields in characteristic
+zero, this is the usual geometric genus of the smooth projective model.
+That standard identification is included in the accepted formulation of the
+external inputs; its proof and a projective model are not constructed here.
+
+Genus lower bound
+
+The second input states that for ell >= 2, B a nonzero integer, and C a list
+of distinct positive integer shifts of length branchCount ell, the equation
+
+    B*y^ell = product_j (x+C_j)
+
+has the above geometric genus at least two. branchCount ell is 6 for ell = 2
+or 3, and ell otherwise. The hypothesis is uniform in B and C. Proving it is
+outside the project scope. An exact genus formula is neither assumed nor
+used as the definition of geometricGenus.
+
+Internal geometry and finiteness deductions
+
+Curves/SuperellipticGeometry.lean proves irreducibility after every
+characteristic-zero field extension: a simple root provides an Eisenstein
+prime. It also proves the Jacobian criterion from separability of the product
+of distinct linear factors. Neither proof uses the genus input or Faltings.
+
+Curves/AffineFiniteness.lean applies affine Faltings to this proved geometry
+and the external genus lower bound. Its conclusion supplies the exact
+rational-zero finiteness premise used in the main proof. The main theorem
+also supplies Lemma 3.6 internally. No additional mathematical input for
+affine finiteness or odd-progression nonsquareness is needed.
+
+Other two inputs and project scope
+
+External.RemondStatement retains the corrected bound
+exp(5^(D^4) * log(M) * log(log(M))) for M >= 3, and requires finiteness before
+the numerical bound is applied. External.PrimeAPStatement retains the
+uniform error estimate of the paper draft's Lemma 3.3.
+
+The threshold target is existence of an absolute k_0, uniform in every
+allowed exponent. Effective computability of k_0 is not a project goal.
+Computing effective prime-AP constants is not a required extension.
+
+Mathematical references for the interface conventions
+
+* Stacks Project, Section 53.2: smooth projective models of curve function
+  fields, https://stacks.math.columbia.edu/tag/0BXX
+* Stacks Project, Lemma 53.8.4: genus as dimension of global regular
+  differentials on a smooth proper curve,
+  https://stacks.math.columbia.edu/tag/0BY6
+* Dan Abramovich, MA 254 Diophantine Geometry notes, slide 3: Faltings stated
+  for smooth curves over number fields, without a projectivity requirement,
+  https://www.math.brown.edu/dabramov/MA/s1516/254/MA254.pdf
+
+These references explain the mathematical convention. They are not Lean
+dependencies or substitutes for the explicitly recorded theorem hypotheses.

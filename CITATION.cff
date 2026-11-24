@@ -1,0 +1,37 @@
+cff-version: "1.2.0"
+message: >-
+  If you use this Lean formalization, please cite it using the metadata below
+  and cite the associated paper where appropriate.
+type: software
+title: >-
+  Perfect powers with small exponents from products of terms in progression
+  (Lean formalization)
+authors:
+  - family-names: Pratt
+    given-names: Kyle
+version: "0.1.0"
+license: Apache-2.0
+abstract: >-
+  Lean 4 formalization of Theorems 1.2, 1.4, and 1.5 of Kyle Pratt's paper,
+  conditional on affine Faltings, a superelliptic genus lower bound, Remond's
+  rational-point bound, and a uniform prime-distribution estimate in arithmetic
+  progressions. The formalization proves existence of one absolute threshold
+  uniform in all allowed exponents; effective computability is outside scope.
+  The formalization was generated and iterated by Codex under Kyle Pratt's
+  mathematical direction.
+keywords:
+  - Lean 4
+  - formalized mathematics
+  - perfect powers
+  - arithmetic progressions
+  - number theory
+references:
+  - type: unpublished
+    title: >-
+      Perfect powers with small exponents from products of terms in progression
+    authors:
+      - family-names: Pratt
+        given-names: Kyle
+    notes: >-
+      Draft used for the formalization. See README.md for the reviewed text's
+      SHA-256 fingerprint and theorem-numbering context.

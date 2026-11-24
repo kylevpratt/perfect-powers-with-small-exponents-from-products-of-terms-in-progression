@@ -1,0 +1,22 @@
+# Dependencies, local tools, caches, logs, and historical records.
+/.lake/
+/tmp/
+/output/
+/notes/
+/progress.json
+/README.txt
+
+# Windows development helpers use this workspace's local toolchain.
+/scripts/lean.ps1
+/scripts/VerifyComparatorNative.ps1
+
+# Local agent and service configuration.
+/.codex/
+/.agents/
+/.aws/
+
+# Generated Lean artifacts.
+*.olean
+*.ilean
+*.olean.hash
+*.ilean.hash

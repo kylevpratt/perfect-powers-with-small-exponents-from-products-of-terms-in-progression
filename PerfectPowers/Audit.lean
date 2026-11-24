@@ -1,0 +1,100 @@
+module
+
+import PerfectPowers
+
+/-!
+# Dependency audit for completed results
+
+These commands audit proofs rather than counting source occurrences of `sorry`.
+The four permitted mathematical inputs have not been instantiated as global
+axioms. `mainResults_of_external_inputs` proves the main-result specifications
+from exactly those four proposition hypotheses, with affine Faltings in the
+accepted formulation. Affine finiteness and Lemma 3.6 are discharged internally.
+-/
+
+#print axioms PerfectPowers.not_isSquare_consecutive_of_start_le_length
+#print axioms PerfectPowers.not_isSquare_negative_consecutive_of_start_le_length
+#print axioms PerfectPowers.Solution.decomposition
+#print axioms PerfectPowers.Decomposition.unique_at
+#print axioms PerfectPowers.Decomposition.x_pairwise_coprime
+#print axioms PerfectPowers.exists_factorial_deletion
+#print axioms PerfectPowers.exists_smooth_factorial_deletion
+#print axioms PerfectPowers.Decomposition.fiber_card_le
+#print axioms PerfectPowers.Decomposition.trivialFiber_card_le_two
+#print axioms PerfectPowers.AdmissiblePair.solution
+#print axioms PerfectPowers.eventually_primeCounting_le_twenty_one_twentieths
+#print axioms PerfectPowers.SmallExponent.branchCount_fifth_power_bound
+#print axioms PerfectPowers.onCurve_of_integer_relations
+#print axioms PerfectPowers.Decomposition.pointY_ne_of_disjoint
+#print axioms PerfectPowers.eventually_initial_small_mass
+#print axioms PerfectPowers.card_boundedCurveDescriptors
+#print axioms PerfectPowers.curvePolynomial_coefficientsBounded
+#print axioms PerfectPowers.eventually_uniform_branchCount_fourth_power
+#print axioms PerfectPowers.exists_disjoint_monochromatic_tuples
+#print axioms PerfectPowers.exists_common_divisor_tuples_with_rough_error
+#print axioms PerfectPowers.eulerDensity_le_inverse_log
+#print axioms PerfectPowers.curvePolynomial_totalDegree_le
+#print axioms PerfectPowers.exists_elementary_common_divisor_tuples
+#print axioms PerfectPowers.eventually_uniform_common_divisor_tuples
+#print axioms PerfectPowers.ProgressionTuple.point_onCurve
+#print axioms PerfectPowers.card_le_coefficient_box_of_finite
+#print axioms PerfectPowers.card_le_curve_family_bound_of_finite
+#print axioms PerfectPowers.ProgressionTuple.ofIndexSet
+#print axioms PerfectPowers.ProgressionTuple.point_ne_of_disjoint
+#print axioms PerfectPowers.curve_rational_points_bound_of_finite
+#print axioms PerfectPowers.even_exponent_step_one_impossible
+#print axioms PerfectPowers.Decomposition.product_smooth_of_step_bound
+#print axioms PerfectPowers.eventually_smooth_of_many_small_trivial_parts
+#print axioms PerfectPowers.factorial_le_pow_mul_prod_of_multiplicity
+#print axioms PerfectPowers.eventually_mass_increment
+#print axioms PerfectPowers.eventually_many_distinct_small_of_heavy_bound
+#print axioms PerfectPowers.exists_disjoint_short_block_tuples
+#print axioms PerfectPowers.ProgressionTuple.support_has_nontrivial
+#print axioms PerfectPowers.Decomposition.heavy_mass_le_curve_bound
+#print axioms PerfectPowers.eventually_heavy_mass_le_of_finite
+#print axioms PerfectPowers.eventually_many_distinct_small_of_finite
+#print axioms PerfectPowers.coefficient_tuple_family_card_bound
+#print axioms PerfectPowers.eventually_many_trivial_parts_of_finite
+#print axioms PerfectPowers.eventually_smooth_bounds_of_finite
+#print axioms PerfectPowers.eventually_theorem14_of_theorem15
+#print axioms PerfectPowers.Solution.exponent_eq_two_of_small_step
+#print axioms PerfectPowers.square_reduction_of_theorem14
+#print axioms PerfectPowers.step_two_square_classification
+#print axioms PerfectPowers.thetaAP_positive_window_le_missing
+#print axioms PerfectPowers.thetaAP_negative_window_le_missing
+#print axioms PerfectPowers.prime_weight_estimate_contradiction
+#print axioms PerfectPowers.eventually_small_step_of_primeAP
+#print axioms PerfectPowers.eventually_theorem15_of_finite
+#print axioms PerfectPowers.mainResults_of_eventually_theorem15
+#print axioms PerfectPowers.exists_prime_in_odd_short_start_interval
+#print axioms PerfectPowers.square_parts_injective_of_large_start
+#print axioms PerfectPowers.oddPrefix_card_le_prod_of_injOn
+#print axioms PerfectPowers.oddPrefix_twice_gt_square
+#print axioms PerfectPowers.odd_square_start_large_of_prime
+#print axioms PerfectPowers.squarefree_odd_product_dvd_oddPrefix_square
+#print axioms PerfectPowers.not_isSquare_odd_progression_of_large_prime
+#print axioms PerfectPowers.odd_dvd_oddPart
+#print axioms PerfectPowers.exists_odd_factorial_deletion
+#print axioms PerfectPowers.exists_odd_progression_deletion
+#print axioms PerfectPowers.primeCounting_mul_log_le
+#print axioms PerfectPowers.primeCounting_log_two_mul_add_one_lt
+#print axioms PerfectPowers.oddPart_mul_two_pow
+#print axioms PerfectPowers.two_pow_binary_digit_sum_le
+#print axioms PerfectPowers.log_oddPart_factorial_upper
+#print axioms PerfectPowers.exists_large_prime_dvd_odd_progression_of_long_start
+#print axioms PerfectPowers.exists_large_prime_dvd_odd_progression
+#print axioms PerfectPowers.oddProgressionNonsquare
+#print axioms PerfectPowers.theorem12_of_theorem14
+#print axioms PerfectPowers.mainResults_of_finite
+#print axioms PerfectPowers.irreducible_power_sub_of_separable_root
+#print axioms PerfectPowers.irreducible_split_superelliptic
+#print axioms PerfectPowers.curvePolynomial_irreducible_over
+#print axioms PerfectPowers.nonsingular_power_equation
+#print axioms PerfectPowers.curvePolynomial_nonsingular
+#print axioms PerfectPowers.superellipticAffineCurve_nonsingular
+#print axioms PerfectPowers.curve_family_finite
+#print axioms PerfectPowers.mainResults_of_external_inputs
+#print axioms PerfectPowers.smallExponent_iff_paper_range
+#print axioms PerfectPowers.weighted_factorial_square_deficit_bound
+#print axioms PerfectPowers.eventually_weighted_factorial_deficit
+#print axioms PerfectPowers.eventually_factorial_square_deficit
