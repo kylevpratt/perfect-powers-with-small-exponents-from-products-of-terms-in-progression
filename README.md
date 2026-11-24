@@ -12,13 +12,13 @@ threshold and proofs of the four external inputs are outside the project scope.
 
 The central equation is
 
-$$
+```math
 \prod_{i\in S}(n+id)=b y^\ell.
-$$
+```
 
 The [basic definitions](PerfectPowers/Basic/Definitions.lean) require
-$k,\ell,d\in\mathbb N$, $k\geq 3$, $d>0$, nonzero signed integers $n,b,y$,
-$\gcd(|n|,d)=1$, $S\subseteq\{0,\ldots,k-1\}$, and every prime divisor of $|b|$
+$k,\ell,d\in\mathbb{N}$, $k\geq 3$, $d>0$, nonzero signed integers $n,b,y$,
+$\gcd(|n|,d)=1$, $S\subseteq\lbrace 0,\ldots,k-1\rbrace$, and every prime divisor of $|b|$
 to be at most $k$. The exponent satisfies
 $2\leq\ell\leq(\log\log k)^{1/5}$ and need not be prime. All logarithms are natural.
 
@@ -54,12 +54,12 @@ of these inputs and declares no global mathematical axioms for them.
 ### 1. Affine Faltings
 
 [`AffineFaltingsStatement`](PerfectPowers/External/AffineFaltings.lean):
-an integer-coefficient affine plane equation over $\mathbb Q$ that is absolutely
+an integer-coefficient affine plane equation over $\mathbb{Q}$ that is absolutely
 irreducible, geometrically nonsingular, and of geometric genus at least two has
 finitely many rational zeros.
 
 The `AffinePlaneCurve` structure includes proofs of irreducibility over
-$\mathbb Q$ and its algebraic closure. Nonsingularity is the Jacobian criterion
+$\mathbb{Q}$ and its algebraic closure. Nonsingularity is the Jacobian criterion
 at every zero over that algebraic closure.
 
 ### 2. Superelliptic genus lower bound
@@ -68,12 +68,12 @@ at every zero over that algebraic closure.
 for every $\ell\geq 2$, nonzero integer $B$, and distinct positive integer shifts
 $C_1,\ldots,C_m$, the curve
 
-$$
+```math
 B y^\ell=\prod_{j=1}^{m}(x+C_j)
-$$
+```
 
 has geometric genus at least two for
-$m=\operatorname{branchCount}(\ell)$, where $m=6$ for $\ell=2,3$ and $m=\ell$
+$m=\mathrm{branchCount}(\ell)$, where $m=6$ for $\ell=2,3$ and $m=\ell$
 for $\ell\geq 4$. The bound is uniform in $B$ and the shifts; $B$ may have either
 sign. The exact genus formula and the broader range of $m$ in the paper's proof
 of Lemma 4.1 are outside the formalized results. The signed coordinate choice in
@@ -82,7 +82,7 @@ see [PaperComparison.lean](PerfectPowers/PaperComparison.lean).
 
 **Geometric boundary.** Both inputs use the
 [genus of the coordinate function field](PerfectPowers/Curves/GeometricGenus.lean):
-the $\mathbb Q$-dimension of rational differentials regular at every discrete
+the $\mathbb{Q}$-dimension of rational differentials regular at every discrete
 valuation subring containing the constants and having that function field as
 its fraction field, including places at infinity. The standard comparison with
 smooth-projective genus, the geometric interpretation of the Jacobian
@@ -96,10 +96,10 @@ of Rémond's Théorème 1.1 (2010). For an integer-coefficient polynomial $F(X,Y
 of total degree $D$ and a natural number $M\geq 3$ bounding the absolute value of
 every coefficient, **assuming its rational zero set is finite**, the bound is
 
-$$
-\#\{(x,y)\in\mathbb Q^2:F(x,y)=0\}
+```math
+\#\{(x,y)\in\mathbb{Q}^2:F(x,y)=0\}
 \leq \exp\!\left(5^{D^4}\log M\,\log\log M\right).
-$$
+```
 
 The Lean statement bounds every finite subset of that zero set and explicitly
 requires finiteness. The exponent on five is $D^4$.
@@ -109,13 +109,17 @@ requires finiteness. The exponent on five is $D^4$.
 [`PrimeAPStatement`](PerfectPowers/External/PrimeAP.lean) retains the estimate
 of Lemma 3.3. For every real $A>0$ there exists $C_A>0$ such that
 
-$$
+```math
 \left|\theta(x,y;d,a)-\frac{x-y}{\varphi(d)}\right|
 \leq \frac{C_A x}{(\log x)^A},
-\qquad
+```
+
+where
+
+```math
 \theta(x,y;d,a)=
-\sum_{\substack{y<p\leq x\\p\text{ prime}\\p\equiv a\pmod d}}\log p,
-$$
+\sum_{\substack{y<p\leq x\\p\text{ prime}\\p\equiv a\pmod{d}}}\log p,
+```
 
 for all real $x\geq y\geq 5$, natural numbers
 $2\leq d\leq(\log x)^{199/100}$, and integers $a$ with $\gcd(|a|,d)=1$.
@@ -149,8 +153,8 @@ signed cases, and uniform exponent range are retained under the four inputs.
 | Theorem 1.4 | [ShortPrimeIntervals.lean](PerfectPowers/Analytic/ShortPrimeIntervals.lean) uses a prime in $(x,5x/4]$ for sufficiently large $x$, derived from mathlib's ordinary prime number theorem. This suffices for the same endpoint ranges. |
 | Theorem 1.2: consecutive products | [StepOneObstruction.lean](PerfectPowers/Main/StepOneObstruction.lean) reduces to elementary nonsquareness for consecutive products of length $k\geq 2$ starting at $1\leq a\leq k$. It replaces the appeal to Erdős–Selfridge for this application; the unrestricted theorem is outside scope. |
 | Lemma 3.6 | [OddNonsquare.lean](PerfectPowers/Squares/OddNonsquare.lean) gives an elementary proof for every positive odd start and length at least two, replacing the Saradha citation. |
-| Lemma 4.1 and its proof | The required family finiteness is deduced from affine Faltings, internally proved geometry, and the assumed genus lower bound for $m=\operatorname{branchCount}(\ell)$. The full lemma's range and the exact genus formula are outside scope. |
-| Lemma 4.4 | [ElementaryTuples.lean](PerfectPowers/Combinatorics/ElementaryTuples.lean) replaces the sieve argument. For $u=m/c$, it uses the stronger size condition $12u\,2^{\exp(4u)}\leq k$ and exponential constant $5$ in place of $2.77$. [TupleThreshold.lean](PerfectPowers/Analytic/TupleThreshold.lean) proves the stronger condition uniformly in the required applications. The full original lemma is outside scope. |
+| Lemma 4.1 and its proof | The required family finiteness is deduced from affine Faltings, internally proved geometry, and the assumed genus lower bound for $m=\mathrm{branchCount}(\ell)$. The full lemma's range and the exact genus formula are outside scope. |
+| Lemma 4.4 | [ElementaryTuples.lean](PerfectPowers/Combinatorics/ElementaryTuples.lean) replaces the sieve argument. For $u=m/c$, it uses the stronger size condition $12u\cdot 2^{\exp(4u)}\leq k$ and exponential constant $5$ in place of $2.77$. [TupleThreshold.lean](PerfectPowers/Analytic/TupleThreshold.lean) proves the stronger condition uniformly in the required applications. The full original lemma is outside scope. |
 | Lemmas 5.3–5.5 | Explicit factorial inequalities replace the asymptotic estimates, and coefficient-dependent blocks replace the dyadic split in Lemma 5.4. The heavy-fiber bound improves from $0.049k/\log k$ to $0.02k/\log k$, without the hypothesis on the total number of trivial power parts. |
 
 [PaperComparison.lean](PerfectPowers/PaperComparison.lean) records the additional
@@ -210,14 +214,17 @@ bash scripts/verify-comparator.sh
 Run this as an unprivileged user in a checkout without a `.lake` directory.
 The [script](scripts/verify-comparator.sh) first runs `lake comparator --paranoid`
 with sandboxing enabled, then runs the build and interface audits.
-The prepared [GitHub Actions workflow](.github/workflows/verify.yml) invokes it.
+The [GitHub Actions workflow](.github/workflows/verify.yml) invokes it.
 
 **Recorded status:** on November 24, 2026, a clean Ubuntu 24.04.5 LTS run under
 WSL 2 passed Comparator with sandboxing and `--paranoid` enabled. All six bundled
 checkers accepted all three targets. The library and wrapper build, dependency
 audits, and five interface-equivalence checks also passed, with only the three
-expected specification-placeholder warnings. A hosted workflow run and registry
-submission remain unperformed. The corresponding logs are retained locally.
+expected specification-placeholder warnings. The
+[first hosted GitHub Actions run](https://github.com/kylevpratt/perfect-powers-with-small-exponents-from-products-of-terms-in-progression/actions/runs/45499122897)
+at commit `4d47f5154b0f47e7dc09c70b062b7c0fa4e0fcb8` also passed all build,
+audit, and Comparator steps. Registry submission remains unperformed. The WSL
+logs are retained locally; hosted logs are available in the linked run.
 
 ## Project notes
 
@@ -239,5 +246,5 @@ Third-party components retain their respective licenses; the paper's licensing
 is separate.
 
 Please cite the formalization using [CITATION.cff](CITATION.cff), which also
-identifies the associated paper. Public repository and publication identifiers
-can be added when available.
+identifies the associated paper. Publication identifiers can be added when
+available.
