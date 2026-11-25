@@ -216,6 +216,9 @@ Run this as an unprivileged user in a checkout without a `.lake` directory.
 The [script](scripts/verify-comparator.sh) first runs `lake comparator --paranoid`
 with sandboxing enabled, then runs the build and interface audits.
 The [GitHub Actions workflow](.github/workflows/verify.yml) invokes it.
+Automatic runs cover pushes to `main` and pull requests, except when the only
+changed files are `README.md` and/or `CITATION.cff`. Manual runs remain available
+through GitHub Actions.
 
 **Recorded status:** on November 24, 2026, a clean Ubuntu 24.04.5 LTS run under
 WSL 2 passed Comparator with sandboxing and `--paranoid` enabled. All six bundled
