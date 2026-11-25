@@ -10,6 +10,7 @@ authors:
   - family-names: Pratt
     given-names: Kyle
 version: "0.1.0"
+repository-code: https://github.com/kylevpratt/perfect-powers-with-small-exponents-from-products-of-terms-in-progression
 license: Apache-2.0
 abstract: >-
   Lean 4 formalization of Theorems 1.2, 1.4, and 1.5 of Kyle Pratt's paper,

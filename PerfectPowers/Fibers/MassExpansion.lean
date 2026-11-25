@@ -9,7 +9,8 @@ import Mathlib.Tactic
 
 These are the elementary deductions in Proposition 5.1 and Proposition 4.5,
 with the heavy-fiber bound of Lemma 5.4 supplied as an explicit hypothesis.
-That bound is a theorem still to prove, not an added external input.
+`Fibers.HeavyMass` proves that bound and applies these deductions using
+the permitted Remond input and curve-family finiteness.
 -/
 
 @[expose] public section

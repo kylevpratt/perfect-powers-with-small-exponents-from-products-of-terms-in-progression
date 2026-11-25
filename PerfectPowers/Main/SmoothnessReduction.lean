@@ -7,8 +7,8 @@ import Mathlib.Tactic
 /-!
 # The elementary part of Theorem 1.5, conditional on Proposition 3.5
 
-The cardinality hypothesis below is exactly the conclusion still to be proved
-in Proposition 3.5. The threshold is absolute and independent of the exponent.
+The cardinality hypothesis below is the conclusion of Proposition 3.5,
+proved in `Main.SmallTrivialParts`. The threshold is absolute and independent of the exponent.
 The final `d = 1 or d = 2` conclusion needs the separate prime-AP argument.
 -/
 
