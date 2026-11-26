@@ -1,7 +1,7 @@
 # Perfect powers with small exponents from products of terms in progression
 
 A Lean 4 formalization of Theorems 1.2, 1.4, and 1.5 of Kyle Pratt's paper
-*Perfect powers with small exponents from products of terms in progression*,
+*[Perfect powers with small exponents from products of terms in progression](https://arxiv.org/abs/2611.33008)*,
 **conditional on four explicit external mathematical hypotheses**.
 
 The main theorem proves existence of one absolute threshold, uniform in all
